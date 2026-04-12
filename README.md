@@ -39,7 +39,7 @@ Dự án bao gồm 2 nhóm file chính:
 
 ---
 
-## 🖼️ Giải thích ý nghĩa các hình ảnh trong folder `export`
+## Giải thích ý nghĩa các hình ảnh trong folder `export`
 
 Thư mục `export` chứa các hình ảnh tĩnh lưu lại kết quả đầu ra của các kịch bản chạy code giúp minh hoạ cho các báo cáo vật lý. 
 
