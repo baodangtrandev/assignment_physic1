@@ -1,59 +1,79 @@
-# Đồ Án / Bài Tập Vật Lý 1: Mô Phỏng Tụ Điện Phẳng
+# Đồ Án Mô Phỏng Tụ Điện Phẳng và Năng Lượng Điện Trường
 
-Đây là kho lưu trữ bài tập mô phỏng vật lý liên quan đến tụ điện phẳng. Các chương trình trong dự án này giúp tính toán, vẽ đồ thị tĩnh bằng Matplotlib, và cung cấp một mô hình mô phỏng 3D tương tác trên nền web bằng Dash & Plotly để minh hoạ trực quan.
+Đây là kho lưu trữ chứa các mã nguồn Python minh họa tính toán và vẽ đồ thị trực quan cho bài toán **Năng lượng của tụ điện phẳng**, bao gồm việc khảo sát **Mật độ năng lượng điện trường ($u_E$)** và **Tổng năng lượng điện trường ($W$)** dựa trên các thông số:
+- Hiệu điện thế giữa hai bản tụ ($V$)
+- Khoảng cách giữa hai bản tụ ($d$)
+- Hằng số điện môi của môi trường ($\kappa$)
 
 ---
 
-## Hướng dấn cài đặt và chạy code
+## 1. Hướng dẫn cài đặt và chạy code
 
-### 1. Yêu cầu hệ thống
-- Môi trường cài đặt Python 3.7+ trở lên.
+### Môi trường hệ thống
+- Yêu cầu cấu hình cài đặt Python 3.7+ trở lên.
 
-### 2. Cài đặt các thư viện cần thiết
-Mở terminal (giao diện dòng lệnh) tại thư mục chứa mã nguồn (`Assignment`) và chạy lệnh sau để tải về các thư viện phụ thuộc (như `dash`, `plotly`, `numpy`, `matplotlib`):
-
+### Cài đặt thư viện
+Mở command line / terminal tại thư mục chứa mã nguồn (`Assignment`) và chạy lệnh:
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Cách chạy các phân đoạn code
-Dự án bao gồm 2 nhóm file chính:
+### Hướng dẫn sử dụng các file Code
 
-* **Mô phỏng 3D tương tác trên Web (Khuyến nghị xem):**
-  - **Files:** `capacitor_simulation.py` và `simulation_2-3.py`
-  - Đây là các ứng dụng Dashboard, cho phép bạn điều chỉnh bằng thanh trượt các thông số như Hiệu điện thế (V), Khoảng cách (d), Hằng số điện môi ($\kappa$) và xem khối 3D mật độ năng lượng thay đổi.
-  - **Cách chạy:**
-    ```bash
-    python capacitor_simulation.py
-    ```
-  - **Lưu ý:** Sau khi chạy lệnh này, Terminal sẽ hiển thị một đường link dạng `http://127.0.0.1:8050`. Bạn hãy copy và dán vào trình duyệt web (Chrome, Edge, Safari...) để xem và tương tác với đồ hoạ. Để dừng mô phỏng, nhấn `Ctrl + C` ở terminal.
+Mã nguồn được chia làm 3 nhóm chính:
 
-* **Các file bài toán & phân tích tĩnh (Vẽ đồ thị Matplotlib):**
-  - **Files Bài tập:** `2-2.py`, `2-3.py`, `2-4.py` chứa phần giải cho các câu hỏi cụ thể, render ra các đồ thị tĩnh 2D và 3D.
-  - **Files Biểu diễn xu hướng:** Các file có tiền tố `plot_*.py` (ví dụ `plot_u_E.py`, `plot_E.py`) dùng để phân tích mối tương quan của các biến số vật lý.
-  - **Cách chạy:**
-    ```bash
-    python 2-2.py
-    ```
-    *(Tương tự thay tên cho các file khác. Code sẽ vẽ đồ thị và hiện lên trong cửa sổ pop-up. Bạn đóng cửa sổ đó để code thực thi xong).*
+**Nhóm 1: Các đồ thị khảo sát tĩnh 2D & 3D (Sử dụng Matplotlib)**
+Các file này khi chạy sẽ mở ra một cửa sổ chứa các đồ thị phân tích tính chất vật lý của hai giá trị năng lượng (các file chia làm mặt cắt ngang 2 chiều hoặc mặt biểu đồ cong 3 chiều).
+- `python 2D_W.py`: Vẽ đồ thị 2D khảo sát Tổng năng lượng $W$.
+- `python 2D_u_E.py`: Vẽ đồ thị 2D khảo sát Mật độ năng lượng $u_E$.
+- `python 3D_W.py`: Biểu diễn toán học không gian bề mặt 3D cho Tổng năng lượng $W$.
+- `python 3D_u_E.py`: Biểu diễn toán học không gian bề mặt 3D cho Mật độ năng lượng $u_E$.
+
+**Nhóm 2: Khảo sát tương tác trực tiếp bằng Window Slider**
+- `python simulation_2D_W.py`
+- `python simulation_2D_u_E.py`
+*(Khi dùng lệnh khởi chạy file, giao diện giả lập hiện lên và cung cấp cần gạt thanh trượt điều chỉnh $V, d, \kappa$ để người dùng quan sát mức năng lượng tính toán nhảy trực tiếp trên đồ thị hình).*
+
+**Nhóm 3: Ứng dụng Web Dashboard mô phỏng Tụ Phẳng Không Gian Tương Tác**
+- `python simulation_3D.py`: Gọi thiết lập máy chủ tạo trang Web App cung cấp khả năng quan sát khối lượng 3 chiều vật lý trực quan nhất.
+- Terminal sẽ đưa ra đường link (VD: `http://127.0.0.1:8050`). Bạn cần mở link này bằng một Browser web để tương tác.
 
 ---
 
-## Giải thích ý nghĩa các hình ảnh trong folder `export`
+## 2. Giải thích ý nghĩa hình ảnh minh hoạ kết quả (Mục `export`)
 
-Thư mục `export` chứa các hình ảnh tĩnh lưu lại kết quả đầu ra của các kịch bản chạy code giúp minh hoạ cho các báo cáo vật lý. 
+Thư mục `/export/` chứa các bộ ảnh được kết xuất hoặc chụp hình màn hình lại minh chứng cho việc hoạt động chính xác của mã nguồn. Nó giúp đưa ra góc nhìn nhanh và nhận xét vật lý để báo cáo.
 
-**1. Các kết quả theo bài tập cụ thể:**
-* `2D_2-2.png` & `2D_2-3.png`: Đồ thị 2D thể hiện mật độ năng lượng (hàm $w(z)$ hoặc $u_E(z)$) phân bố ra sao theo trục Z (phương vuông góc với bản tụ). Năng lượng chỉ tập trung ở giữa hai bản tụ và bằng 0 ở bên ngoài.
-* `3D_2-2.png` & `3D_2-3.png`: Đồ thị 3D biểu diễn bề mặt không gian mật độ năng lượng nằm giữa khu vực khe của 2 bản tụ. Do điện trường tụ phẳng là đều nên mặt này tạo thành một mặt phẳng nằm ngang.
-* `2-4.png`: Hình ảnh kết quả tương ứng khi chạy nghiệm cho bài toán 2-4.
+### Nhóm Ảnh Đồ thị Tính chất bề mặt 3D
+![3D_W.png](./export/3D_W.png)
+- **`export/3D_W.png`**: Ảnh biểu diễn phân tích xu hướng 3 bề mặt cong 3D phản ánh sự phụ thuộc của dạng sóng phân bố Tổng năng lượng ($W$) vào các tổ hợp cặp tham số. Cung cấp góc nhìn rõ rệt nhất về đỉnh năng lượng tăng khi $V$ tăng hoặc $d$ thu hẹp chiều rộng.
 
-**2. Hình ảnh mô phỏng Web Dashboard:**
-* `simulation_3D_u_E.png`: Hình chụp màn hình khối hộp 3D cho dự án Dash, thể hiện cả véctơ hình nón chỉ điểm hướng dòng điện trường $\vec{E}$ và bề mặt ánh xạ tương ứng màu sắc biểu tượng Mật độ Năng lượng $u_E$.
-* `simulation_2D_u_E.png`: Phiên bản rút gọn hoặc mặt cắt đồ thị mô phỏng mật độ thay vì khối 3D toàn diện.
+![3D_uE.png](./export/3D_uE.png)
+- **`export/3D_uE.png`**: Tính chất tương đồng hình trên nhưng được áp dụng giải cho **Mật độ năng lượng ($u_E$)**. Cấu hình đồ thị này thường có góc dốc và võng gắt hơn cấu hình $W$ do đặc trưng của tỷ lệ.
 
-**3. Đồ thị khảo sát sự phụ thuộc vật lý:**
-* `E~V-d.png`: Sự biến thiên của **Cường độ điện trường (E)** dưới tác động của Hiệu điện thế (V) và Khoảng cách giữa 2 bản (d).
-* `u_E~V-d.png`: Mối tương quan cho thấy **Mật độ năng lượng (u_E)** thay đổi theo hàm của (V) và (d).
-* `u_E~k-V.png`: Mật độ năng lượng (u_E) biến động thế nào trên lưới hai trục: Hằng số điện môi ($\kappa$) và Hiệu điện thế (V).
-* `u_E~k-d.png`: Mặt cong tương quan giữa Mật độ năng lượng (u_E) với Hằng số điện môi ($\kappa$) và Khoảng cách (d).
+---
+
+### Nhóm Ảnh Phân tích quy luật Tỷ Lệ mặt phẳng 2D
+Làm rõ bản chất phương trình vật lý khi trải nghiệm việc khoá các hằng số không xét, chỉ thả trượt 1 biến đơn lập.
+![2D_W.png](./export/2D_W.png)
+- **`export/2D_W.png`**: Bộ ba đồ thị đặc trưng chứng nhận lý thuyết trong sự phụ thuộc biến sinh của **Tổng năng lượng $W$**: 
+  1. $W$ theo $V$ tạo thành đường Parabol lõm dần ($W \propto V^2$). 
+  2. $W$ theo $d$ là một đường Hyperbol ($W \propto \frac{1}{d}$). 
+  3. $W$ theo $\kappa$ vẽ ra hàm đồ thị tăng trưởng tuyến tính thẳng góc ($W \propto \kappa$).
+
+![2D_uE.png](./export/2D_uE.png)
+- **`export/2D_uE.png`**: Khảo sát mặt cắt sự biến đổi đồng dạng cho **Mật độ năng lượng ($u_E$)**: Có nhánh cung đường đồ thị phụ thuộc biến $d$ dốc lõm cong gắt gấp đôi hình đồ thị trước do quy luật chia bậc biểu thức nghịch biến là bình phương ($u_E \propto \frac{1}{d^2}$).
+
+---
+
+### Nhóm Ảnh lưu về Giao diện tương tác UI Mô phỏng
+Tài liệu cung cấp cái nhìn về màn hình mà bạn sẽ thấy khi chạy thành công các kịch bản thực tiễn có cung cấp thanh trượt (Slider Interface).
+
+![simulation_3D.png](./export/simulation_3D.png)
+- **`export/simulation_3D.png`**: Giao diện ứng dụng Dash. Có một khối thiết diện tụ không gian 3 chiều có các lưới véctơ tĩnh điện định hướng. Bản vẽ đáp ứng sự tính toán khối tương tác cực kỳ ấn tượng mỗi khi nhích khoảng cách giữa 2 mặt của tụ ở thanh công cụ Dash Toolbar bên trái.
+
+![simulation_2D_W.png](./export/simulation_2D_W.png)
+- **`export/simulation_2D_W.png`**: Ảnh chụp Panel màn hình thanh điều khiển kéo thả được code bằng Matplotlib Native để phân phối thông số điện môi mô phỏng sự vọt năng lượng **$W$** so với chất chân không ở điều kiện thật.
+
+![simulation_2D_uE.png](./export/simulation_2D_uE.png)
+- **`export/simulation_2D_uE.png`**: Cấu hình bảng hiển thị tương đồng của file thực thi slider trực tiếp giám sát nhảy biên độ của chỉ số **mật độ năng lượng ($u_E$)**.
