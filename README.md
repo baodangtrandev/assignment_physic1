@@ -9,15 +9,47 @@
 
 ## 1. Hướng dẫn cài đặt và chạy code
 
-### Môi trường hệ thống
-- Yêu cầu cấu hình cài đặt Python 3.7+ trở lên.
+### 1.1 Khởi tạo môi trường ảo (Khuyến nghị)
+Để tránh xung đột thư viện với các dự án khác, bạn nên thiết lập một môi trường ảo (Virtual Environment) riêng. Tùy thuộc vào công cụ bạn đang quen dùng, hãy Mở Terminal / Command Prompt và chạy:
 
-### Cài đặt thư viện
-Mở command line / terminal tại thư mục chứa mã nguồn (`Assignment`) và chạy lệnh:
+**Cách 1: Sử dụng tiện ích `venv` (Có sẵn của Python)**
+```bash
+# Tạo môi trường ảo có tên là "physic_env"
+python -m venv physic_env
+
+# Kích hoạt môi trường ảo (Trên máy tính Windows)
+physic_env\Scripts\activate
+
+# Kích hoạt môi trường ảo (Trên máy MacOS hoặc Linux)
+source physic_env/bin/activate
+```
+
+**Cách 2: Sử dụng Anaconda / Miniconda**
+```bash
+# Tạo môi trường riêng biệt tên "physic1"
+conda create -n physic1 python=3.9 -y
+
+# Kích hoạt môi trường
+conda activate physic1
+```
+
+### 1.2 Tải Source Code và Cài đặt thư viện
+Clone repository này về máy theo đường dẫn mã nguồn:
+```bash
+git clone https://github.com/baodangtrandev/assignment_physic1.git
+cd assignment_physic1/Assignment
+```
+
+Tại thư mục `Assignment` và đảm bảo môi trường ảo dòng lệnh đã kích hoạt, chạy lệnh sau để tải lượng thư viện phụ thuộc lõi (như `numpy`, `matplotlib`, `dash`, `plotly`):
 ```bash
 pip install -r requirements.txt
 ```
 
+### 1.3 Lưu ý cách thao tác khi chạy và tắt Code
+- **Đối với các file đồ thị dùng Matplotlib (`2D_*.py`, `3D_*.py`):** Sau khi chạy lệnh, một cửa sổ pop-up khung hình sẽ xuất hiện. Trình Python Terminal sẽ bị treo để duy trì cửa sổ này. Để kết thúc chương trình hoàn toàn, hãy bấm nút **Close (X)** tắt cửa sổ hình ảnh đó.
+- **Đối với ứng dụng Web Dashboard Dash (`simulation_3D.py`):** Hệ thống sẽ thiết lập một Server Local liên tục chạy nền. Để dừng hẳn ứng dụng và trả lại Terminal, hãy thao tác tổ hợp phím **`Ctrl + C`** trên màn hình Console.
+
+---
 ### Hướng dẫn sử dụng các file Code
 
 Mã nguồn được chia làm 3 nhóm chính:
