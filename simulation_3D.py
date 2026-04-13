@@ -65,7 +65,7 @@ app.layout = html.Div(style={'fontFamily': 'Segoe UI, Tahoma, Geneva, Verdana, s
             dcc.Slider(
                 id='kappa-slider',
                 min=1, max=10, step=0.1, value=1.0,
-                marks={1: 'Chân không(1)', 3: '3', 5: 'Thủy tinh(5)', 8: '8', 10: '10'},
+                marks={1: '1', 3: '3', 5: '5', 8: '8', 10: '10'},
                 tooltip={"placement": "bottom", "always_visible": True}
             ),
 
@@ -203,7 +203,7 @@ def update_simulation(voltage, distance, kappa):
         html.H3("Dữ liệu vật lý"),
         html.P([html.Strong("Cường độ điện trường (E): "), f"{E:,.2f} (V/m)"]),
         html.P([html.Strong("Mật độ năng lượng (u_E): "), f"{u_E_max:,.6f} (J/m³)"]),
-        html.P([html.Strong("Tổng năng lượng (U): "), f"{total_energy:,.8f} (J)"])
+        html.P([html.Strong("Tổng năng lượng (W): "), f"{total_energy:,.8f} (J)"])
     ]
 
     return fig, stats_html

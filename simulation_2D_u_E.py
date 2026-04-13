@@ -15,8 +15,8 @@ K_INIT = 2.0        # kappa
 # ==========================================
 # Chỉnh lại kích thước cửa sổ gọn gàng hơn
 fig = plt.figure(figsize=(10, 8))
-fig.canvas.manager.set_window_title('Khảo sát Năng lượng Tụ điện')
-fig.suptitle('Đồ thị Khảo sát Mật độ Năng lượng Điện trường', fontsize=16, fontweight='bold')
+fig.canvas.manager.set_window_title('Khảo sát năng lượng tụ điện')
+fig.suptitle('Đồ thị khảo sát mật độ năng lượng điện trường', fontsize=16, fontweight='bold')
 
 # Vùng chứa đồ thị 2D (Được mở rộng ra giữa màn hình)
 ax2d = fig.add_axes([0.15, 0.35, 0.75, 0.5])
@@ -81,7 +81,7 @@ def update(val):
     uE_k = 0.5 * k_val * EPS_0 * (E**2)
     
     # Cập nhật Text
-    text_str = (f"CƯỜNG ĐỘ E: {E:.2e} V/m   |   "
+    text_str = (f"Cường độ E: {E:.2e} V/m   |   "
                 f"u_E (Chân không): {uE_0:.2e} J/m³   |   "
                 f"u_E (Điện môi): {uE_k:.2e} J/m³")
     info_text.set_text(text_str)
